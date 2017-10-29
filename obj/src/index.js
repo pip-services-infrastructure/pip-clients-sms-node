@@ -4,6 +4,6 @@ function __export(m) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./version1"));
-var SmsDeliveryClientFactory_1 = require("./build/SmsDeliveryClientFactory");
-exports.SmsDeliveryClientFactory = SmsDeliveryClientFactory_1.SmsDeliveryClientFactory;
+var SmsClientFactory_1 = require("./build/SmsClientFactory");
+exports.SmsClientFactory = SmsClientFactory_1.SmsClientFactory;
 //# sourceMappingURL=index.js.map

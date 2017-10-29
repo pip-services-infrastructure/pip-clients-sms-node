@@ -8,14 +8,14 @@ and provides high-level API to access the microservice for simple and productive
 * [Getting started](#get_started)
 * [SmsMessageV1 class](#class1)
 * [SmsRecipientV1 class](#class2)
-* [ISmsDeliveryClientV1 interface](#interface)
+* [ISmsClientV1 interface](#interface)
     - [sendMessage()](#operation1)
     - [sendMessageToRecipient()](#operation2)
     - [sendMessageToRecipient()](#operation3)
-* [SmsDeliveryHttpClientV1 class](#client_http)
-* [SmsDeliverySenecaClientV1 class](#client_seneca)
-* [SmsDeliveryDirectClientV1 class](#client_direct)
-* [SmsDeliveryNullClientV1 class](#client_null)
+* [SmsHttpClientV1 class](#client_http)
+* [SmsSenecaClientV1 class](#client_seneca)
+* [SmsDirectClientV1 class](#client_direct)
+* [SmsNullClientV1 class](#client_null)
 * [Message Templates](#templates)
 
 ## <a name="install"></a> Installation
@@ -27,7 +27,7 @@ To work with the client SDK add dependency into package.json file:
     ...
     "dependencies": {
         ....
-        "pip-clients-smsdelivery-node": "^1.0.*",
+        "pip-clients-sms-node": "^1.0.*",
         ...
     }
 }
@@ -49,7 +49,7 @@ This is a simple example on how to work with the microservice using REST client:
 
 ```javascript
 // Get Client SDK for Version 1 
-var sdk = new require('pip-clients-smsdelivery-node');
+var sdk = new require('pip-clients-sms-node');
 
 // Client configuration
 var config = {
@@ -68,7 +68,7 @@ var config = {
 };
 
 // Create the client instance
-var client = sdk.SmsDeliveryHttpClientV1(config);
+var client = sdk.SmsHttpClientV1(config);
 
 // Open client connection to the microservice
 client.open(null, function(err) {
@@ -135,14 +135,14 @@ tries to restore them from sms settings.
 - phone: string - (optional) primary user sms
 - language: string - (optional) user preferred language
 
-## <a name="interface"></a> ISmsDeliveryClientV1 interface
+## <a name="interface"></a> ISmsClientV1 interface
 
 If you are using Typescript, you can use ISmsClientV1 as a common interface across all client implementations. 
 If you are using plain Javascript, you shall not worry about ISmsClient interface. You can just expect that
 all methods defined in this interface are implemented by all client classes.
 
 ```javascript
-interface ISmsDeliveryClientV1 {
+interface ISmsClientV1 {
     sendMessage(correlationId, message, parameters, callback);
     sendMessageToRecipient(correlationId, recipient, message, parameters, callback);
     sendMessageToRecipients(correlationId, recipients, message, parameters, callback);
@@ -184,12 +184,12 @@ Sends sms message to multiple recipients
 - callback: (err) => void - callback function
   - err: Error - occured error or null for success
 
-## <a name="client_http"></a> SmsDeliveryHttpClientV1 class
+## <a name="client_http"></a> SmsHttpClientV1 class
 
-SmsDeliveryHttpClientV1 is a client that implements HTTPprotocol
+SmsHttpClientV1 is a client that implements HTTPprotocol
 
 ```javascript
-class SmsDeliveryHttpClientV1 extends CommandableHttpClient implements ISmsClientV1 {
+class SmsHttpClientV1 extends CommandableHttpClient implements ISmsClientV1 {
     constructor(config?: any);
     setReferences(refs);
     open(correlationId, callback);
@@ -207,12 +207,12 @@ class SmsDeliveryHttpClientV1 extends CommandableHttpClient implements ISmsClien
   - host: string - IP address/hostname binding (default is '0.0.0.0')
   - port: number - HTTP port number
 
-## <a name="client_seneca"></a> SmsDeliverySenecaClientV1 class
+## <a name="client_seneca"></a> SmsSenecaClientV1 class
 
-SmsDeliverySenecaClientV1 is a client that implements Seneca protocol
+SmsSenecaClientV1 is a client that implements Seneca protocol
 
 ```javascript
-class SmsDeliverySenecaClientV1 extends CommandableSenecaClient implements ISmsClientV1 {
+class SmsSenecaClientV1 extends CommandableSenecaClient implements ISmsClientV1 {
     constructor(config?: any);        
     setReferences(refs);
     open(correlationId, callback);
@@ -230,13 +230,13 @@ class SmsDeliverySenecaClientV1 extends CommandableSenecaClient implements ISmsC
   - host: string - IP address/hostname binding (default is '0.0.0.0')
   - port: number - Seneca port number
 
-## <a name="client_direct"></a> SmsDeliveryDirectClientV1 class
+## <a name="client_direct"></a> SmsDirectClientV1 class
 
-SmsDeliveryDirectClientV1 is a client that calls controller from the same container.
+SmsDirectClientV1 is a client that calls controller from the same container.
 It is intended to be used in monolythic deployments.
 
 ```javascript
-class SmsDeliveryDirectClientV1 extends DirectClient implements ISmsClientV1 {
+class SmsDirectClientV1 extends DirectClient implements ISmsClientV1 {
     constructor();
     setReferences(refs);
     open(correlationId, callback);
@@ -247,13 +247,13 @@ class SmsDeliveryDirectClientV1 extends DirectClient implements ISmsClientV1 {
 }
 ```
 
-## <a name="client_null"></a> SmsDeliveryNullClientV1 class
+## <a name="client_null"></a> SmsNullClientV1 class
 
-SmsDeliveryNullClientV1 is a dummy client that mimics the real client but doesn't call a microservice. 
+SmsNullClientV1 is a dummy client that mimics the real client but doesn't call a microservice. 
 It can be useful in testing scenarios to cut dependencies on external microservices.
 
 ```javascript
-class SmsDeliveryNullClientV1 implements ISmsClientV1 {
+class SmsNullClientV1 implements ISmsClientV1 {
     constructor();
     sendMessage(correlationId, message, parameters, callback);
     sendMessageToRecipient(correlationId, recipient, message, parameters, callback);

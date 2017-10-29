@@ -1,8 +1,8 @@
 export { SmsMessageV1 } from './SmsMessageV1';
 export { SmsRecipientV1 } from './SmsRecipientV1';
-export { ISmsDeliveryClientV1 } from './ISmsDeliveryClientV1';
-export { SmsDeliveryHttpClientV1 } from './SmsDeliveryHttpClientV1';
-export { SmsDeliverySenecaClientV1 } from './SmsDeliverySenecaClientV1';
-export { SmsDeliveryLambdaClientV1 } from './SmsDeliveryLambdaClientV1';
-export { SmsDeliveryDirectClientV1 } from './SmsDeliveryDirectClientV1';
-export { SmsDeliveryNullClientV1 } from './SmsDeliveryNullClientV1';
+export { ISmsClientV1 } from './ISmsClientV1';
+export { SmsHttpClientV1 } from './SmsHttpClientV1';
+export { SmsSenecaClientV1 } from './SmsSenecaClientV1';
+export { SmsLambdaClientV1 } from './SmsLambdaClientV1';
+export { SmsDirectClientV1 } from './SmsDirectClientV1';
+export { SmsNullClientV1 } from './SmsNullClientV1';

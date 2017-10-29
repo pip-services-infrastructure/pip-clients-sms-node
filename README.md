@@ -1,6 +1,6 @@
 # Sms Delivery Microservice Client SDK for Node.js
 
-This is a Node.js client SDK for [pip-services-smsdelivery](https://github.com/pip-services-users/pip-services-smsdelivery-node) microservice.
+This is a Node.js client SDK for [pip-services-sms](https://github.com/pip-services-users/pip-services-sms-node) microservice.
 It provides an easy to use abstraction over communication protocols:
 
 * HTTP client
@@ -24,7 +24,7 @@ Add dependency to the client SDK into **package.json** file of your project
     ...
     "dependencies": {
         ....
-        "pip-clients-smsdelivery-node": "^1.0.*",
+        "pip-clients-sms-node": "^1.0.*",
         ...
     }
 }
@@ -43,7 +43,7 @@ npm update
 
 Inside your code get the reference to the client SDK
 ```javascript
-var sdk = new require('pip-clients-smsdelivery-node');
+var sdk = new require('pip-clients-sms-node');
 ```
 
 Define client configuration parameters.
@@ -69,7 +69,7 @@ var config = {
 Instantiate the client and open connection to the microservice
 ```javascript
 // Create the client instance
-var client = sdk.SmsDeliveryHttpClient(config);
+var client = sdk.SmsHttpClient(config);
 
 // Connect to the microservice
 client.open(null, function(err) {
