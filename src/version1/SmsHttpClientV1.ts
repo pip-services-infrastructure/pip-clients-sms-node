@@ -10,7 +10,7 @@ export class SmsHttpClientV1 extends CommandableHttpClient implements ISmsClient
     private _defaultParameters: ConfigParams;
 
     constructor(config?: any) {
-        super('sms');
+        super('v1/sms');
 
         let thisConfig = ConfigParams.fromValue(config);
         this._defaultParameters = thisConfig.getSection('parameters');
