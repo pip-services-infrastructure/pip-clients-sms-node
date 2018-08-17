@@ -4,7 +4,7 @@ let async = require('async');
 import { Descriptor } from 'pip-services-commons-node';
 import { ConfigParams } from 'pip-services-commons-node';
 import { References } from 'pip-services-commons-node';
-import { ConsoleLogger } from 'pip-services-commons-node';
+import { ConsoleLogger } from 'pip-services-components-node';
 
 import { SmsController } from 'pip-services-sms-node';
 import { ISmsClientV1 } from '../../src/version1/ISmsClientV1';
@@ -21,7 +21,7 @@ suite('SmsDirectClientV1', ()=> {
         controller.configure(new ConfigParams());
 
         let references: References = References.fromTuples(
-            new Descriptor('pip-services-commons', 'logger', 'console', 'default', '1.0'), logger,
+            new Descriptor('pip-services', 'logger', 'console', 'default', '1.0'), logger,
             new Descriptor('pip-services-sms', 'controller', 'default', 'default', '1.0'), controller,
         );
         controller.setReferences(references);

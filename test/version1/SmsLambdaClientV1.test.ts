@@ -5,26 +5,33 @@ import { ConfigParams } from 'pip-services-commons-node';
 import { SmsClientFixtureV1 } from './SmsClientFixtureV1';
 import { SmsLambdaClientV1 } from '../../src/version1/SmsLambdaClientV1';
 
-suite('SmsLambdaClient', ()=> {
-    let awsAccessId = process.env['AWS_ACCESS_ID'];
-    let awsAccessKey = process.env['AWS_ACCESS_KEY'];
-    let awsArn = process.env['AWS_ARN'];
+suite('SmsLambdaClient', () => {
+    let AWS_LAMDBA_ARN = process.env["AWS_LAMDBA_ARN"] || "";
+    let AWS_ACCESS_ID = process.env["AWS_ACCESS_ID"] || "";
+    let AWS_ACCESS_KEY = process.env["AWS_ACCESS_KEY"] || "";
+
+    if (!AWS_LAMDBA_ARN || !AWS_ACCESS_ID || !AWS_ACCESS_KEY)
+        return;
+
+    let config = ConfigParams.fromTuples(
+        "lambda.connection.protocol", "aws",
+        "lambda.connection.arn", AWS_LAMDBA_ARN,
+        "lambda.credential.access_id", AWS_ACCESS_ID,
+        "lambda.credential.access_key", AWS_ACCESS_KEY,
+        "lambda.options.connection_timeout", 30000
+    );
+    let lambdaConfig = config.getSection('lambda');
 
     // Skip if connection is not configured
-    if (awsAccessId == null || awsArn == null) return;
+    if (lambdaConfig.getAsNullableString("connection.protocol") != "aws")
+        return;
 
     let client: SmsLambdaClientV1;
     let fixture: SmsClientFixtureV1;
 
     setup((done) => {
         client = new SmsLambdaClientV1();
-
-        client.configure(ConfigParams.fromTuples(
-            'connection.protocol', 'aws',
-            'connection.arn', awsArn,
-            'credential.access_id', awsAccessId,
-            'credential.access_key', awsAccessKey
-        ));
+        client.configure(lambdaConfig);
 
         fixture = new SmsClientFixtureV1(client);
 

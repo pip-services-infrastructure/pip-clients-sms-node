@@ -1,6 +1,6 @@
 import { ConfigParams } from 'pip-services-commons-node';
 import { Descriptor } from 'pip-services-commons-node';
-import { DirectClient } from 'pip-services-net-node';
+import { DirectClient } from 'pip-services-rpc-node';
 
 import { ISmsClientV1 } from './ISmsClientV1';
 import { SmsMessageV1 } from './SmsMessageV1';

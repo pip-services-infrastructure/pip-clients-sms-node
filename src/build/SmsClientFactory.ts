@@ -1,5 +1,5 @@
 import { Descriptor } from 'pip-services-commons-node';
-import { Factory } from 'pip-services-commons-node';
+import { Factory } from 'pip-services-components-node';
 
 import { SmsNullClientV1 } from '../version1/SmsNullClientV1';
 import { SmsDirectClientV1 } from '../version1/SmsDirectClientV1';
