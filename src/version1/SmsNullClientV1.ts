@@ -1,4 +1,4 @@
-import { ConfigParams } from 'pip-services-commons-node';
+import { ConfigParams } from 'pip-services3-commons-node';
 
 import { ISmsClientV1 } from './ISmsClientV1';
 import { SmsMessageV1 } from './SmsMessageV1';

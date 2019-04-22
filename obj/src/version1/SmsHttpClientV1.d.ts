@@ -1,5 +1,5 @@
-import { ConfigParams } from 'pip-services-commons-node';
-import { CommandableHttpClient } from 'pip-services-rpc-node';
+import { ConfigParams } from 'pip-services3-commons-node';
+import { CommandableHttpClient } from 'pip-services3-rpc-node';
 import { SmsMessageV1 } from './SmsMessageV1';
 import { SmsRecipientV1 } from './SmsRecipientV1';
 import { ISmsClientV1 } from './ISmsClientV1';
