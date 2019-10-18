@@ -13,9 +13,9 @@ class SmsClientFactory extends pip_services3_components_node_1.Factory {
         this.registerAsType(SmsClientFactory.HttpClientV1Descriptor, SmsHttpClientV1_1.SmsHttpClientV1);
     }
 }
+exports.SmsClientFactory = SmsClientFactory;
 SmsClientFactory.Descriptor = new pip_services3_commons_node_1.Descriptor('pip-services-sms', 'factory', 'default', 'default', '1.0');
 SmsClientFactory.NullClientV1Descriptor = new pip_services3_commons_node_1.Descriptor('pip-services-sms', 'client', 'null', 'default', '1.0');
 SmsClientFactory.DirectClientV1Descriptor = new pip_services3_commons_node_1.Descriptor('pip-services-sms', 'client', 'direct', 'default', '1.0');
 SmsClientFactory.HttpClientV1Descriptor = new pip_services3_commons_node_1.Descriptor('pip-services-sms', 'client', 'http', 'default', '1.0');
-exports.SmsClientFactory = SmsClientFactory;
 //# sourceMappingURL=SmsClientFactory.js.map
